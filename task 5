@@ -1,0 +1,31 @@
+#task5
+#Create a program that simulates rolling a pair of dice and prints out the results using python
+import random
+def roll_dice():
+    dice1 = random.randint(1, 6)
+    dice2 = random.randint(1, 6)
+    return dice1, dice2
+
+def main():
+    print("Dice Rolling Simulator")
+    print("----------------------")
+
+    while True:
+        input("Press Enter to roll the dice...")
+
+        dice1, dice2 = roll_dice()
+
+        print("Dice 1:", dice1)
+        print("Dice 2:", dice2)
+
+        total = dice1 + dice2
+        print("Total:", total)
+
+        play_again = input("Roll again? (y/n): ")
+
+        if play_again.lower() != 'y':
+            print("Goodbye!")
+            break
+
+if __name__ == '__main__':
+    main()
