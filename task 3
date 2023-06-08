@@ -1,0 +1,43 @@
+#task3
+#Create a program that generates secure passwords based on specified criteria such as length and character types using python
+import random
+import string
+
+def generate_password(length, include_lowercase, include_uppercase, include_digits, include_symbols):
+    characters = ''
+
+    if include_lowercase:
+        characters += string.ascii_lowercase
+    if include_uppercase:
+        characters += string.ascii_uppercase
+    if include_digits:
+        characters += string.digits
+    if include_symbols:
+        characters += string.punctuation
+
+    if not characters:
+        print("Error: At least one character type must be included.")
+        return None
+
+    password = ''.join(random.choice(characters) for _ in range(length))
+    return password
+
+def main():
+    print("Secure Password Generator")
+    print("------------------------")
+
+    while True:
+        length = int(input("Enter the desired password length: "))
+        include_lowercase = input("Include lowercase letters? (y/n): ").lower() == 'y'
+        include_uppercase = input("Include uppercase letters? (y/n): ").lower() == 'y'
+        include_digits = input("Include digits? (y/n): ").lower() == 'y'
+        include_symbols = input("Include symbols? (y/n): ").lower() == 'y'
+
+        password = generate_password(length, include_lowercase, include_uppercase, include_digits, include_symbols)
+
+        if password:
+            print("Generated Password:", password)
+            break
+
+if __name__ == '__main__':
+    main()
